@@ -1,0 +1,200 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("gradient.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    text-align: center;
+    padding: 10px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin: 20px 20px;
+    padding:0px;
+}
+
+
+.icons {
+    display: flex;
+    justify-content: center;
+    gap:100px;
+    margin-top: 70px;
+}
+
+.icon {     
+    text-align: center;
+    width: 100px;  /* Adjust width */
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    cursor: pointer; 
+}
+
+.icon:hover {
+    transform: scale(1.20);
+}
+
+.icon i {
+    font-size: 48px;
+    margin-bottom: auto;
+    color: #007BFF;
+}
+
+.icon p {
+    font-size: 16px;
+    margin-top: 220px;
+    font-weight: bold;
+    text-align: bottom;
+    white-space: nowrap;
+}
+#roll-dice {
+    background-image: url("d.jpg"); /* Replace with your image path */
+    background-size: contain; /* Adjust to fit inside the div */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Ensure the image doesn’t repeat */
+    background-color: #fff; /* Optional: a background color to go with the image */
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 60px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+#roll-dice:hover {
+    transform: scale(1.20);
+}
+
+#flip-coin {
+    background-image: url("h1.jpg"); /* Replace with your image path */
+    background-size: contain; /* Adjust to fit inside the div */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Ensure the image doesn’t repeat */
+    background-color: #fff; /* Optional: a background color to go with the image */
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 60px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+#flip-coin:hover {
+    transform: scale(1.20);
+}
+
+#coin-challenge {
+    background-image: url("c1.jpg"); /* Replace with your image path */
+    background-size: contain; /* Adjust to fit inside the div */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Ensure the image doesn’t repeat */
+    background-color: #fff; /* Optional: a background color to go with the image */
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 60px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+#coin-challenge:hover {
+    transform: scale(1.20);
+}
+
+#roll-dice {
+    cursor: pointer;
+}
+
+#dice-container {
+    perspective: 1000px;
+}
+
+#dice {
+    width: 100px;
+    height: 100px;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+
+#dice .face {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border: 1px solid #000;
+    font-size: 48px;
+    text-align: center;
+    line-height: 100px;
+}
+
+#dice .front {
+    transform: translateZ(50px);
+}
+
+#dice .back {
+    transform: rotateY(180deg) translateZ(50px);
+}
+
+#dice .top {
+    transform: rotateX(90deg) translateZ(50px);
+}
+
+#dice .bottom {
+    transform: rotateX(-90deg) translateZ(50px);
+}
+
+#dice .left {
+    transform: rotateY(-90deg) translateZ(50px);
+}
+
+#dice .right {
+    transform: rotateY(90deg) translateZ(50px);
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.container {
+    width: 300px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.coin {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: 20px auto;
+    line-height: 100px;
+    font-size: 36px;
+}
+
+#result {
+    font-weight: bold;
+}
+
+#outcome {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+

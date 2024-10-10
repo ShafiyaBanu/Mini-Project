@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Challenge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("gradient.png");
+             background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            width: 300px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        #home-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 20px;
+
+        }
+        
+        #home-button:hover {
+            background-color: #0056b3;
+        }
+
+
+        .coin {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .coin img {
+            width: 200px;
+            height: 200px;
+        }
+
+        #result-image {
+            border-radius: 50%;
+        }
+
+        #outcome {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        .button-container {
+            margin-bottom: 20px;
+        }
+
+        .button {
+            width: 120px;
+            height: 40px;
+            font-size: 18px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ccc;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .button.selected {
+            background-color: #66cc00;
+            color: #fff;
+        }
+
+        #flip-button {
+            width: 240px;
+            height: 40px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #flip-button:hover {
+            background-color: #3e8e41;
+        }
+
+        #flip-button:active {
+            background-color: #2f6d31;
+            transform: scale(0.9);
+        }
+    </style>
+</head>
+<body>
+     <audio id="click-sound">
+        <source src="button_click.mp3" type="audio/mp3">
+    </audio>
+
+     <div id="header">
+         <button id="home-button" onclick="playSoundAndNavigate()">Home</button>    </div>
+
+
+    </div>
+     
+    <div class="container">
+        <h1>Coin Challenge</h1>
+        <div class="coin">
+            <img id="result-image" src="heads.jpg" alt="Coin Result">
+        </div>
+        <div>
+           <p>Choose heads or tails?</p>
+        </div>
+        <div class="button-container">
+            <button class="button" id="heads-button" onclick="playSound()">Heads</button>
+            <button class="button" id="tails-button" onclick="playSound()">Tails</button>
+        </div>
+        <button id="flip-button" onclick="playSound(); flipCoin()">Flip Coin</button>
+        <div id="outcome"></div>
+    </div>
+    <script>
+        let userGuess = null;
+        const headsButton = document.getElementById('heads-button');
+        const tailsButton = document.getElementById('tails-button');
+        const resultImage = document.getElementById('result-image');
+
+        headsButton.addEventListener('click', () => {
+            userGuess = 'heads';
+            headsButton.classList.add('selected');
+            tailsButton.classList.remove('selected');
+        });
+
+        tailsButton.addEventListener('click', () => {
+            userGuess = 'tails';
+            tailsButton.classList.add('selected');
+            headsButton.classList.remove('selected');
+        });
+
+        function flipCoin() {
+            if (userGuess === null) {
+                alert('Please select Heads or Tails');
+                return;
+            }
+            const coinFlip = Math.random() < 0.5 ? 'heads' : 'tails';
+            if (coinFlip === 'heads') {
+                resultImage.src = 'heads.jpg';
+            } else {
+                resultImage.src = 'tails.jpg';
+            }
+            if (userGuess === coinFlip) {
+                document.getElementById('outcome').textContent = 'WIN!';
+                document.getElementById('outcome').style.color = 'green';
+            } else {
+                document.getElementById('outcome').textContent = 'LOSE!';
+                document.getElementById('outcome').style.color = 'red';
+            }
+        }
+function playSound() {
+            document.getElementById('click-sound').play();
+        }
+function playSoundAndNavigate() {
+            playSound();
+            setTimeout(() => {
+                location.href = 'Game_of_Chance.html';
+            }, 250);
+        }
+
+
+
+
+    </script>
+</body>
+</html>

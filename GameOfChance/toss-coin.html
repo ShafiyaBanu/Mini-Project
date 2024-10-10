@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toss a Coin</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url("gradient.png");
+             background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
+        #home-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 20px;
+
+        }
+        
+        #home-button:hover {
+            background-color: #0056b3;
+        }
+        #header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 20px;
+        }
+        
+
+
+        #coin-container {
+            perspective: 1000px; /* Perspective for 3D effect */
+            margin-bottom: 20px;
+        }
+
+        #coin {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateX(0deg);
+            transition: transform 5s ease; /* The coin flips for 5 seconds */
+        }
+
+        #coin .face {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            backface-visibility: hidden; /* Hides the reverse side */
+        }
+
+        #coin .heads {
+            background-image: url('heads.jpg'); /* Replace with your heads coin image */
+        }
+
+        #coin .tails {
+            background-image: url('tails.jpg'); /* Replace with your tails coin image */
+            transform: rotateX(180deg); /* Rotate the tails face on X-axis */
+        }
+
+        #toss-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #toss-btn:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+     <audio id="click-sound">
+        <source src="button_click.mp3" type="audio/mp3">
+    </audio>
+     <div id="header">
+        <button id="home-button" onclick="playSoundAndNavigate()">Home</button>    </div>
+    <div id="coin-container">
+        <div id="coin">
+            <div class="face heads"></div>
+            <div class="face tails"></div>
+        </div>
+    </div>
+    
+    <button id="toss-btn" onclick="playSound()">Toss!</button>
+    <p id="result"></p>
+
+    <script>
+        document.getElementById('toss-btn').addEventListener('click', function() {
+            const coin = document.getElementById('coin');
+            const result = document.getElementById('result');
+
+            // Reset the coin position before the next flip
+            coin.style.transition = 'none'; // Disable the transition for reset
+            coin.style.transform = 'rotateX(0deg)'; // Reset to the initial position
+            result.textContent = ''; // Clear previous result
+
+            setTimeout(() => {
+                // Randomly decide if it's heads (0) or tails (1)
+                const outcome = Math.floor(Math.random() * 2);
+
+                // Apply flipping animation for 5 seconds with multiple rotations
+                coin.style.transition = 'transform 5s ease'; // Set transition time to 5 seconds
+                coin.style.transform = `rotateX(${1800 + (outcome === 0 ? 0 : 180)}deg)`; // Rotate multiple times before landing
+
+                // Display the result after 5 seconds
+                setTimeout(() => {
+                    result.textContent = outcome === 0 ? "Heads" : "Tails";
+                }, 5000); // Delay showing the result until the flip completes
+            }, 100); // Delay for 100ms to reset before starting the flip
+        });
+         function playSound() {
+    return new Promise(resolve => {
+        document.getElementById('click-sound').play();
+        resolve();
+    });
+}
+function playSoundAndNavigate() {
+            playSound();
+            setTimeout(() => {
+                location.href = 'Game_of_Chance.html';
+            }, 250);
+        }
+
+
+    </script>
+
+</body>
+</html>

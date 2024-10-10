@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of Chance</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <audio id="click-sound">
+        <source src="button_click.mp3" type="audio/mp3">
+    </audio>
+    <div class="container">
+        <h1>Game Zone</h1>
+        <div class="icons">
+            <div class="icon" id="roll-dice" onclick="playSoundAndNavigate1();">
+                <i class="fas fa-dice"></i>
+                <p>Roll Dice</p>
+            </div>
+            <div class="icon" id="flip-coin" onclick="playSoundAndNavigate2();">
+    <i class="fas fa-coin"></i>
+    <p>Toss Coin</p>
+</div>
+
+<div class="icon" id="coin-challenge" onclick="playSoundAndNavigate3();">
+    <i class="fas fa-trophy"></i>
+    <p>Coin Challenge</p>
+</div>
+        </div>
+    </div>
+    <script>
+        function playSound() {
+            document.getElementById('click-sound').play();
+        }
+        function playSoundAndNavigate1() {
+            playSound();
+            setTimeout(() => {
+                location.href = 'roll-dice.html';
+            }, 250);
+        }
+        function playSoundAndNavigate2() {
+    playSound();
+    setTimeout(() => {
+        location.href = 'toss-coin.html';
+    }, 250);
+}
+
+function playSoundAndNavigate3() {
+    playSound();
+    setTimeout(() => {
+        location.href = 'coin-challenge.html';
+    }, 250);
+}
+
+
+    </script>
+</body>
+</html>
